@@ -6,7 +6,7 @@ studying Network
 
 Day 1. Keyword [ 디렉토리, ls, Package manager, 다운로드]
 
-<b>디렉토리<b>
+<b> 디렉토리 <b>
   mkdir 디렉토리명 : 디렉토리 생성 명령어
     mkdir -p dir1/dir2/dir3/dir4 : -p 라는 추가 명령어를 통해서 dir4까지 가기전의 부모 디렉터리까지 생성해줌.
 
