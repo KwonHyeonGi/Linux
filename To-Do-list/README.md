@@ -1,4 +1,4 @@
-Linux 
+<head>Linux</head> 
 
 1. 새 프로젝트 (To-Do List) 테이블 생성
 2. Python 프로젝트 폴더 및 환경설정
@@ -173,7 +173,7 @@ Linux
     sudo ln -s /etc/nginx/sites-available/new_project /etc/nginx/sites-enabled/
     sudo systemctl restart nginx
 
-    후 웹브라우저에서 http://127.0.0.1:8000 접속 시
+    후 웹브라우저에서 'http://127.0.0.1:8000' 접속 시
     to-do-List가 보임 
 
 
@@ -186,5 +186,3 @@ Linux
 
 
 *******************중간에 있었던 오류***********************
-
-https://github.com/KwonHyeonGi/Linux/issues/2#issue-3577390074
