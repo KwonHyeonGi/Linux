@@ -8,3 +8,170 @@ Linux
 5. Gunicorn 실행
 6. Nginx 설정 파일 생성
 7. 최종 테스
+
+
+[1]
+  새 프로젝트 (To - Do List) 테이블 생성
+    sudo mysql
+
+    USE myproject;
+    myproject를 사용할 예정(MYSQL사용 중이기에 뒤에 ; 필수)
+
+    CREATE TABLE todos (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      task VARCHAR(255) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    테이블 생성 후 
+    SHOW TABLES;
+
+    확인 후  
+    exit;
+
+[2] Python 프로젝트 폴더 및 환경설정
+
+    sudo apt install nano python3-pip python3-venv
+    편집기 nano, 라이브러리 pip, 가상환경 venv 설치
+
+    cd /var/www
+    후
+    sudo mkdir new_project
+    폴더 생성
+    sudo chown -R hyeongi:hyeongi new_project
+    를 통해서 권한 부여
+
+    cd new_project
+    이동 후 
+    가상환경 활성화
+    python3 -m venv venv
+    source venv/bin/activate
+
+    pip insatll flask gunicorn mysql-connector-python 
+     requirements가 없기에 직접 설치
+
+    nano app.py
+    사용할 db 코드 
+                                from flask import Flask, request, redirect, render_template_string
+                            import mysql.connector
+                            
+                            app = Flask(__name__)
+                            
+                            # Day 3에서 만든 DB 정보 (Life Logger와 동일한 DB/User 사용)
+                            DB_CONFIG = {
+                                'user': 'myprojectuser',      # Day 3에서 만든 아이디
+                                'password': '1234',           # Day 3에서 설정한 비번
+                                'host': 'localhost',        # '127.0.0.1' 또는 'localhost'
+                                'database': 'myprojectdb'     # Day 3에서 만든 DB 이름
+                            }
+                            
+                            # HTML 템플릿 (파일 없이 Python 코드 안에 포함)
+                            HTML_TEMPLATE = """
+                            <!DOCTYPE html>
+                            <html lang="ko">
+                            <head>
+                                <meta charset="UTF-8">
+                                <title>My To-Do List</title>
+                                <style>
+                                    body { font-family: sans-serif; container: centered; max-width: 600px; margin: 50px auto; background: #f4f4f4; }
+                                    h1 { color: #333; }
+                                    ul { list-style: none; padding: 0; }
+                                    li { background: #fff; margin: 5px 0; padding: 10px; border-radius: 5px; }
+                                    form { margin-top: 20px; }
+                                    input[type=text] { width: 70%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+                                    input[type=submit] { padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+                                </style>
+                            </head>
+                            <body>
+                                <h1>Simple To-Do List (Ver 2.0)</h1>
+                                <ul>
+                                    {% for todo in todos %}
+                                        <li>{{ todo[1] }} <small>({{ todo[2] }})</small></li>
+                                    {% endfor %}
+                                </ul>
+                                <form action="/add" method="POST">
+                                    <input type="text" name="task" placeholder="새 할 일 입력...">
+                                    <input type="submit" value="추가">
+                                </form>
+                            </body>
+                            </html>
+                            """
+                            
+                            def get_db():
+                                """DB 커넥션을 가져오는 함수"""
+                                return mysql.connector.connect(**DB_CONFIG)
+                            
+                            @app.route('/')
+                            def index():
+                                """메인 페이지: To-Do 리스트를 보여줍니다."""
+                                db = get_db()
+                                cursor = db.cursor()
+                                cursor.execute("SELECT * FROM todos ORDER BY created_at DESC")
+                                todos = cursor.fetchall()
+                                cursor.close()
+                                db.close()
+                                return render_template_string(HTML_TEMPLATE, todos=todos)
+                            
+                            @app.route('/add', methods=['POST'])
+                            def add_task():
+                                """/add 경로로 POST 요청이 오면 할 일을 추가합니다."""
+                                task = request.form['task']
+                                if task:
+                                    db = get_db()
+                                    cursor = db.cursor()
+                                    cursor.execute("INSERT INTO todos (task) VALUES (%s)", (task,))
+                                    db.commit()
+                                    cursor.close()
+                                    db.close()
+                                return redirect('/')
+                            
+                            if __name__ == '__main__':
+                                app.run(debug=True, host='0.0.0.0', port=5000)
+                            
+    코드는 Gemini의 도움을 받음
+
+[3] Python 이랑 DB 연동 후 내부테스트
+
+  python3 app.py
+  로 직접 실행
+
+  다른 터미널에서
+  curl localhost:5000
+
+   후 입력한 html 코드가 보이면 성공
+
+[4] Flask 연동 아닌 Nginx 와 Gunicorn 을 이용한 연동 해보기
+
+
+    python3 는 종료 후
+
+    gunicorn --bind 0.0.0.0:8000 app:app
+    로 gunicorn 실행
+
+5. Gunicorn 실행
+
+    다른 터미널 창에서
+    sudo nano /etc/nginx/sites-available/new_project
+    로 새로운 Nginx 설정 생성
+                            server {
+                            listen 80;
+                            server_name 10.0.2.15; # 가상머신 IP 또는 localhost
+                        
+                            location / {
+                                proxy_pass [http://127.0.0.1:8000](http://127.0.0.1:8000);
+                                proxy_set_header Host $host;
+                                proxy_set_header X-Real-IP $remote_addr;
+                                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                            }
+                        }
+
+    저장 후 
+
+    Nginx 설정 활성화
+
+    sudo rm /etc/nginx/sites-enabled/default   ***중요*** '기본 Welcome' 설정 링크가 있다면 제거
+    sudo ln -s /etc/nginx/sites-available/new_project /etc/nginx/sites-enabled/
+    sudo systemctl restart nginx
+
+    후 웹브라우저에서 http://127.0.0.1:8000 접속 시
+    to-do-List가 보임 
