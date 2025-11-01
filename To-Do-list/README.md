@@ -186,3 +186,13 @@
 
 
 *******************중간에 있었던 오류***********************
+
+1. <img width="733" height="596" alt="Image" src="https://github.com/user-attachments/assets/a9550d92-f0cd-41e4-8d33-4b9992e67315" />
+
+new project 로 폴더를 생성했으나 문제가 생김  
+띄어쓰기가 있을경우 "" 안에 넣어야 함 파악  
+근데 그냥 새로 폴더 생성함 new_project로
+
+
+
+2. 
