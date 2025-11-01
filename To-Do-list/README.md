@@ -193,6 +193,5 @@ new project 로 폴더를 생성했으나 문제가 생김
 띄어쓰기가 있을경우 "" 안에 넣어야 함 파악  
 근데 그냥 새로 폴더 생성함 new_project로
 
+<img width="723" height="73" alt="Image" src="https://github.com/user-attachments/assets/f43a117b-8cad-4efa-8b37-4f4a61bae8e8" />
 
-
-2. 
