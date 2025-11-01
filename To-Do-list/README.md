@@ -169,8 +169,8 @@
 
     Nginx 설정 활성화
 
-    sudo rm /etc/nginx/sites-enabled/default   ***중요*** '기본 Welcome' 설정 링크가 있다면 제거
-    sudo ln -s /etc/nginx/sites-available/new_project /etc/nginx/sites-enabled/
+    sudo rm /etc/nginx/sites-enabled/default   ***중요*** '기본 Welcome' 설정 링크가 있다면 제거  
+    sudo ln -s /etc/nginx/sites-available/new_project /etc/nginx/sites-enabled/  
     sudo systemctl restart nginx
 
     후 웹브라우저에서 'http://127.0.0.1:8000' 접속 시
