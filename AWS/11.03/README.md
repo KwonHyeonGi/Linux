@@ -12,64 +12,64 @@ AWS 학습
   를 통해서 서버에 접속해준다.
 
   이 후 부터는 전에서부터 해오던
-  sudo apdate
-  sudo apt install nginx
-  sudo systemctl start ngnix
-  sudo apt insatll mysql-server
-  sudo mysql_secure_insatllation -> 보안 설정
-  후
-  sudo mysql
-    DATABASE 생성(CREATE DATABASE)
-    권한 부여(GRANT ALL PRIVILEGES ON )
-    TABEL 생성(CREATE TABLE)
-    테이블 확인(SHOW TABLES)
-      SQL 설정 완료 후 
-    SQL 종료 (exit;)
+  sudo apdate  
+  sudo apt install nginx  
+  sudo systemctl start ngnix  
+  sudo apt insatll mysql-server  
+  sudo mysql_secure_insatllation -> 보안 설정  
+  후  
+  sudo mysql  
+    DATABASE 생성(CREATE DATABASE)  
+    권한 부여(GRANT ALL PRIVILEGES ON )  
+    TABEL 생성(CREATE TABLE)  
+    테이블 확인(SHOW TABLES)  
+      SQL 설정 완료 후   
+    SQL 종료 (exit;)  
 
   sudo apt install python3-pip python3-venv nano( 가상머신, 편집기, 수정)
 
-  cd /var/www
-  sudo mkdir new_project
-  sudo chown -R ubuntu:unbuntu new_project
-  cd new_project
-  python3 -m venv venv
-  source venv/bin/activate (venv 실행)
-
-  후
-
-  ip4 주소 인터넷을 통해서 입력
-
-  welcome to nginx! 화면 확인 
-
-
-  [Nginx를 통해서 연동 확인하기]
-
-  pip install flask gunicorn mysql-connector-python 
-  nano app.py 를 통해서 사용될 html 코드 입력
-  python3 app.py  로 실행
-
-  새로운 터미널에서(주의 할점 : 다시 ssh를 통해서 ec2 인스턴스 서버에 들어가야함)
+  cd /var/www  
+  sudo mkdir new_project  
+  sudo chown -R ubuntu:unbuntu new_project  
+  cd new_project  
+  python3 -m venv venv  
+  source venv/bin/activate (venv 실행)  
   
-  ssh -i ~.pem ubuntu@ip4addr
-  후
-  curl localhost:5000 
-  사용된 코드가 나오면서 확인 완료
+  후  
+  
+  ip4 주소 인터넷을 통해서 입력  
+  
+  welcome to nginx! 화면 확인   
+  
+  
+  [Nginx를 통해서 연동 확인하기]  
 
-  [gunicorn을 통해서 연동 확인하기]
+  pip install flask gunicorn mysql-connector-python   
+  nano app.py 를 통해서 사용될 html 코드 입력  
+  python3 app.py  로 실행  
 
-  gunicorn --bind 0.0.0.0:8000 app:app
-  실행 완료 되면
+  새로운 터미널에서(주의 할점 : 다시 ssh를 통해서 ec2 인스턴스 서버에 들어가야함)  
+  
+  ssh -i ~.pem ubuntu@ip4addr  
+  후  
+  curl localhost:5000   
+  사용된 코드가 나오면서 확인 완료  
 
-  새로운 터미널에서  
-  sudo nano /etc/nginx/sites-available/new_project
-  sudo ln -s /etc/nginx/sites-available/new_project /etc/nginx/sites-enabled/
-  sudo rm /etc/nginx/sites-enabled/default
-  sudo systemctl restart nginx
+  [gunicorn을 통해서 연동 확인하기]  
 
-  를 통해서 다시 실행 해주고
+  gunicorn --bind 0.0.0.0:8000 app:app  
+  실행 완료 되면  
+
+  새로운 터미널에서    
+  sudo nano /etc/nginx/sites-available/new_project  
+  sudo ln -s /etc/nginx/sites-available/new_project /etc/nginx/sites-enabled/  
+  sudo rm /etc/nginx/sites-enabled/default  
+  sudo systemctl restart nginx  
+
+  를 통해서 다시 실행 해주고  
 
   웹사이트에 ip4주소 입력후 입력한 html 화면이 나오면 확인 완료.
-  
+    
   
 -----------------------------------------------------------------------------------
 Today's error
