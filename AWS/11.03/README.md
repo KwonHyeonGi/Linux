@@ -78,13 +78,13 @@ Today's error
 
 <img width="886" height="214" alt="Image" src="https://github.com/user-attachments/assets/6960dbc1-2f3d-4780-845a-dd20dbf21861" />  
 
-E : 새로운 터미널에서 내부테스트 할 때의 오류
+E : 새로운 터미널에서 내부테스트 할 때의 오류  
 S : ssh로 aws 접속 후 내부테스트
 
 [2]   
 <img width="609" height="111" alt="Image" src="https://github.com/user-attachments/assets/2f3a23f3-99b7-462f-bc95-664cf4733f00" />  
 
-E : Nginx를 통해서 내부테스트 할 때의 오류
+E : Nginx를 통해서 내부테스트 할 때의 오류  
 S : error 코드를 보면 line2 에 문제가 있는 것을 알려줌. 코드 수정 
 
 [3]  
@@ -93,6 +93,6 @@ S : error 코드를 보면 line2 에 문제가 있는 것을 알려줌. 코드 �
 
 <img width="924" height="55" alt="Image" src="https://github.com/user-attachments/assets/fa2a3a84-470b-4c22-ae65-0c1e002a6650" />  
 
-E : Gunicorn을 통한 내부테스트 할 때의 오류
+E : Gunicorn을 통한 내부테스트 할 때의 오류  
 S : sudo nginx -t(nginx파일에 문제가 있는지 테스트) 후 나온 error 문구 확인후 코드 수정
 
