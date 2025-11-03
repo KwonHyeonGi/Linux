@@ -75,6 +75,7 @@ AWS 학습
 Today's error
 
 [1] 
+<img width="886" height="214" alt="Image" src="https://github.com/user-attachments/assets/6960dbc1-2f3d-4780-845a-dd20dbf21861" />
 E : 새로운 터미널에서 내부테스트 할 때의 오류
 S : ssh로 aws 접속 후 내부테스트
 
