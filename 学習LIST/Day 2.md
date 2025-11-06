@@ -4,13 +4,17 @@
 
 ## output : 출력
 - `Standard Output : 1>` : 기본 출력
-- `Standard Error : 2>' : 에러값 출력
+- `Standard Error : 2>` : 에러값 출력
+
+<img width="549" height="497" alt="Image" src="https://github.com/user-attachments/assets/8b3ed66c-4c52-4bb3-bc11-573229129725" />
   
 ## input : 입력
 - `Standard Input : < ` : 입력을 해주는 명령어	
 
 ## append
 - ` >> ` : 출력 값을 더한다
+- 
+<img width="722" height="209" alt="Image" src="https://github.com/user-attachments/assets/14226b77-e7f6-46a0-9fda-eb3bb46dfa7b" />
 
 ## Shell  
 - `하드웨어 > 커널 > 쉘` : 쉘에게 명령을 내리면 커널이 이해할 수 있게 쉘이 커널에게 전달해줌 그리고 명령이 하달됌
