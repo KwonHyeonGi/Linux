@@ -1,7 +1,7 @@
 # 📝 VirtualBox를 통해서 가상환경 Ubuntu에서 실습
 
 ## 목표 : 전에 파이썬에서 만든 웹어플리케이션을 git을 통해서 연결.
-> 흐름
+> **흐름**
 >  >mysql 설치
 >  >전용 database 생성하기
 >  >Git에 있는 나의 코드를 가져오고, 가상환경(venv)에서 코드가 실행 될 수 있도록
@@ -18,8 +18,7 @@
   을 통해서 보안 확인(비밀번호 설정 및 root 계정에 관한 설정)   
    
   `sudo mysql`   
-  을 통해서 접속해보기   
-  확인 후    
+  을 통해서 접속해보기 확인 후    
   `quit;`
 
 
@@ -66,8 +65,7 @@
     가상환경 활성화   
 
     `pip install -r requirements.txt`   
-    를 통해서 flask, gunicorn 등등을 설치   
-    나는 없어서 requirements 파일이 없어서    
+    를 통해서 flask, gunicorn 등등을 설치, requirements 파일이 없을경우   
     `pip install flask gunicorn mysql-connector-python`   
     을 통해서 직접 설치 함   
 
@@ -81,8 +79,6 @@
   LIFE LOOGER에 있는 app.py의 정보 변경을 위하여   
   myproject/'DAY 3' 폴더로 이동   
   `cd 'DAY 3`   
-  후   
-
   `nano app.py`   
    app.py 내용이 쭉 나옴   
    그 중    
@@ -93,11 +89,8 @@
       'database': 'myprojectdb'     # Day 3에서 만든 DB 이름
   ```
 
-    이런 식으로 수정을 해줌   
-
-    완료 후   
-
-
+    이런 식으로 수정   
+    
 ### [5]. 내부 테스트 
     `python3 app.py`   
     를 통해서 서버를 열어줌   
