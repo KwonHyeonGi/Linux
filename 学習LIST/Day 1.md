@@ -1,8 +1,4 @@
-10.16 Linux
-
-studying Network 
 1. Linux
-
 
 Day 1. Keyword [ 디렉토리, ls, Package manager, 다운로드]
 
