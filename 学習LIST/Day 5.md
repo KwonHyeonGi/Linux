@@ -1,21 +1,21 @@
-<head>Linux</head> 
+# TO_Do_List
 
-1. 새 프로젝트 (To-Do List) 테이블 생성
-2. Python 프로젝트 폴더 및 환경설정
-3. Python 이랑 DB 연동 후 내부테스트
+> **흐름**
+>  >새 프로젝트 (To-Do List) 테이블 생성
+>  >Python 프로젝트 폴더 및 환경설정
+>  >Python 이랑 DB 연동 후 내부테스트
+>  >Flask 연동 아닌 Nginx 와 Gunicorn 을 이용한 연동 해보기
+>  >Gunicorn 실행
+>  >Nginx 설정 파일 생성
+>  >최종 테스트
 
-4. Flask 연동 아닌 Nginx 와 Gunicorn 을 이용한 연동 해보기
-5. Gunicorn 실행
-6. Nginx 설정 파일 생성
-7. 최종 테스
 
-
-[1]
-  새 프로젝트 (To - Do List) 테이블 생성
+## [1]  새 프로젝트 (To - Do List) 테이블 생성
+   ```
     sudo mysql
 
     USE myproject;
-    myproject를 사용할 예정(MYSQL사용 중이기에 뒤에 ; 필수)
+   
 
     CREATE TABLE todos (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,36 +23,32 @@
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
-    테이블 생성 후 
     SHOW TABLES;
 
-    확인 후  
     exit;
+  ```
 
-[2] Python 프로젝트 폴더 및 환경설정
-
+## [2] Python 프로젝트 폴더 및 환경설정
+  ```
     sudo apt install nano python3-pip python3-venv
-    편집기 nano, 라이브러리 pip, 가상환경 venv 설치
-
+ 
     cd /var/www
-    후
+
     sudo mkdir new_project
-    폴더 생성
+
     sudo chown -R hyeongi:hyeongi new_project
-    를 통해서 권한 부여
 
     cd new_project
-    이동 후 
-    가상환경 활성화
+
     python3 -m venv venv
     source venv/bin/activate
 
     pip insatll flask gunicorn mysql-connector-python 
-     requirements가 없기에 직접 설치
 
     nano app.py
-    사용할 db 코드 
-                                from flask import Flask, request, redirect, render_template_string
+
+                            ```
+                            from flask import Flask, request, redirect, render_template_string
                             import mysql.connector
                             
                             app = Flask(__name__)
@@ -127,32 +123,23 @@
                             
                             if __name__ == '__main__':
                                 app.run(debug=True, host='0.0.0.0', port=5000)
-                            
-    코드는 Gemini의 도움을 받음
+                            ```
+  ```
+## [3] Python 이랑 DB 연동 후 내부테스트
 
-[3] Python 이랑 DB 연동 후 내부테스트
-
-  python3 app.py
-  로 직접 실행
-
+  `python3 app.py`
+ 
   다른 터미널에서
-  curl localhost:5000
+  `curl localhost:5000`
 
-   후 입력한 html 코드가 보이면 성공
+## [4] Flask 연동 아닌 Nginx 와 Gunicorn 을 이용한 연동 해보기
 
-[4] Flask 연동 아닌 Nginx 와 Gunicorn 을 이용한 연동 해보기
+  `gunicorn --bind 0.0.0.0:8000 app:app`
 
-
-    python3 는 종료 후
-
-    gunicorn --bind 0.0.0.0:8000 app:app
-    로 gunicorn 실행
-
-5. Gunicorn 실행
-
-    다른 터미널 창에서
-    sudo nano /etc/nginx/sites-available/new_project
-    로 새로운 Nginx 설정 생성
+  다른 터미널 창에서
+  `sudo nano /etc/nginx/sites-available/new_project`
+  로 새로운 Nginx 설정 생성
+  ```
                             server {
                             listen 80;
                             server_name 10.0.2.15; # 가상머신 IP 또는 localhost
@@ -164,14 +151,14 @@
                                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                             }
                         }
-
+  ```
     저장 후 
 
     Nginx 설정 활성화
 
-    sudo rm /etc/nginx/sites-enabled/default   ***중요*** '기본 Welcome' 설정 링크가 있다면 제거  
-    sudo ln -s /etc/nginx/sites-available/new_project /etc/nginx/sites-enabled/  
-    sudo systemctl restart nginx
+    `sudo rm /etc/nginx/sites-enabled/default`   ***중요*** '기본 Welcome' 설정 링크가 있다면 제거  
+    `sudo ln -s /etc/nginx/sites-available/new_project /etc/nginx/sites-enabled/` 
+   ` sudo systemctl restart nginx`
 
     후 웹브라우저에서 'http://127.0.0.1:8000' 접속 시
     to-do-List가 보임 
