@@ -47,4 +47,7 @@ VPC(Virtual Private Cloud)라는 가상 네트워크를 이용할 예정.
 
   Ngnix와 gunicorn 을 통한 내부 테스트.
 
+
+ <img width="768" height="91" alt="Image" src="https://github.com/user-attachments/assets/a8d304e3-1f74-4289-9139-fc776857bd80" />  
+ 
   완료.
