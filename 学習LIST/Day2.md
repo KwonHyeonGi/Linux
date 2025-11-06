@@ -3,8 +3,6 @@
 **Redirection**: 방향 전환  
  input ->  명령 -> output(결과)
  
-* * *
-
 **output** : 출력   
 '>' : 출력을 해주는 명령어  
 **ex)** ls -l > result.log  :  ls -l 을 result.log에 출력 저장. 
@@ -19,14 +17,11 @@
 
     그렇기에 rm rename2.txt를 했을때 rename2라는 파일이 없을경우 파일삭제가 실패, 즉 에러가 발생하기에 2>(표준에러)에 출력되게됨.
 
-* * *
-
 **input** : 입력
    < : 입력을 해주는 명령어
     head n1 < linux.txt > one.txt
     linux.txt라는 파일의 전체에서 첫번째 행만 one.txt에 출력해라
 	
-* * *
 
 **append** 
   >> : 더한다
@@ -35,15 +30,11 @@
     
     /dev/null  : 휴지통 같은 역할
 
-* * *
-
 **Shell** 
   shell과 kernel
   하드웨어 > 커널 > 쉘
   쉘에게 명령을 내리면 커널이 이해할 수 있게 쉘이 커널에게 전달해줌 그리고 명령이 하달됌
 
- * * *
- 
 **Shell script**
   명령어를 저장 하는 시스템
 
