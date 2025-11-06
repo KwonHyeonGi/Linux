@@ -1,4 +1,4 @@
-### Day 2. Keyword [ Redirection, Input, Output, Shell, Shell script ]
+# Day 2. Keyword [ Redirection, Input, Output, Shell, Shell script ]
 
 **Redirection**: 방향 전환  
  input ->  명령 -> output(결과)
