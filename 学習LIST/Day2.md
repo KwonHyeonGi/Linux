@@ -1,14 +1,13 @@
-10.17 Linux
+### Day 2. Keyword [ Redirection, Input, Output, Shell, Shell script ]
 
-Day 2. Keyword [ Redirection, Input, Output, Shell, Shell script ]
-
-**  Redirection **
-	: 방향 전환
+**Redirection**: 방향 전환  
  input ->  명령 -> output(결과)
+ 
+* * *
 
- output : 출력
-  > : 출력을 해주는 명령어
-    ls -l > result.log : ls -l 을 result.log에 출력 저장. 
+**output** : 출력   
+'>' : 출력을 해주는 명령어  
+**ex)** ls -l > result.log  :  ls -l 을 result.log에 출력 저장. 
    
     re rename2.txt 후 다시한번 rm rename2.txt 하면 에러가 나옴
     그 에러 내용을 다이렉션하여 error.log라는 파일에 출력
@@ -20,24 +19,32 @@ Day 2. Keyword [ Redirection, Input, Output, Shell, Shell script ]
 
     그렇기에 rm rename2.txt를 했을때 rename2라는 파일이 없을경우 파일삭제가 실패, 즉 에러가 발생하기에 2>(표준에러)에 출력되게됨.
 
-  input : 입력
+* * *
+
+**input** : 입력
    < : 입력을 해주는 명령어
     head n1 < linux.txt > one.txt
     linux.txt라는 파일의 전체에서 첫번째 행만 one.txt에 출력해라
+	
+* * *
 
-  append 
+**append** 
   >> : 더한다
     출력값을 더한다는 거임
     ls -al >> result.txt : result.txt와 result.txt를 더해서 두번 보여줌
     
     /dev/null  : 휴지통 같은 역할
-  
-** Shell** 
+
+* * *
+
+**Shell** 
   shell과 kernel
   하드웨어 > 커널 > 쉘
   쉘에게 명령을 내리면 커널이 이해할 수 있게 쉘이 커널에게 전달해줌 그리고 명령이 하달됌
+
+ * * *
  
-** Shell script **
+**Shell script**
   명령어를 저장 하는 시스템
 
   bak이라는 디렉토리를 만들고, 디렉토리에 1.log 2.log 3.log를 만든다 라는 명령어를 저장 하고 싶을 경우
