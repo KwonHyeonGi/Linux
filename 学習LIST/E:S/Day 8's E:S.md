@@ -1,9 +1,9 @@
-# >error 1
-## >  >ssh 접속 오류.
+# error 1
+## ssh 접속 오류.
 <img width="707" height="72" alt="Image" src="https://github.com/user-attachments/assets/7e45963d-2803-43d2-8eb5-0446ede3b07a" />   
 
-## >  >  >Solution
-### >  >  > subnet 설정 시 Private가 아닌 Public으로 되어있었음.
+## Solution
+###  subnet 설정 시 Private가 아닌 Public으로 되어있었음.
 <img width="1657" height="461" alt="Image" src="https://github.com/user-attachments/assets/2272e733-8d17-4cce-a62d-5570e4b2671a" />
 
 # error 2
