@@ -87,7 +87,7 @@
 ### 직접 에러 발생시키기
 
 - pipefail을 통한 에러 발생시 상황 연출
-- `nano setup_server.sh
+- `nano setup_server.sh`
   
 ```
       # ... (Nginx 서비스 시작 완료 부분)
@@ -106,7 +106,7 @@
 
 ```
 -`false` : 에러
-- 뒤의 `log_message "setting up firewall (UFW)." 를 주석처리한 이유는 조금 더 확실하게 확인하기 위함.
+- 뒤의 `log_message "setting up firewall (UFW)."` 를 주석처리한 이유는 조금 더 확실하게 확인하기 위함.
 - `./setup_server.sh`
 - 에러 발생 후 ssh전체가 종료 됨. pipefail이 잘 작동됨을 확인.
 <img width="984" height="138" alt="Image" src="https://github.com/user-attachments/assets/37a292df-42cb-40e8-b820-56f4dc6e6839" />   
@@ -153,7 +153,7 @@
 - `-m` : 사용자의 home directory 지정 /home/ops_user
 - `-s /bin/bash` : 기본 쉘을 지정(ssh로 접속했을 때 명령어를 실행할 수 있는 BASH쉘 제공
 - `echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL"` : echo를 통한 출력 ops_user가 모든터미널(ALL)에서 NOPASSWD로 모든 관리자 명령을 실행할 수 있게 하는 규칙 설정
-- `sudo tee ect/sudoers.d/"${USERNAME}" : sudo 권한 설정 파일을 모아두는 시스템 디렉토리(.d 이기에)에 ${USERNAME}을 파일 저장/생성을한다. 일반사용자 권한으로는 불가능 하기에 sudo를 통해서 가능하게 해줌
+- `sudo tee ect/sudoers.d/"${USERNAME}"` : sudo 권한 설정 파일을 모아두는 시스템 디렉토리(.d 이기에)에 ${USERNAME}을 파일 저장/생성을한다. 일반사용자 권한으로는 불가능 하기에 sudo를 통해서 가능하게 해줌
 - 즉 ` echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"${USERNAME}"` 을 A|sudo tee /etc/sudoers.d/"${USERNAME}" 로 표현하면 A의 규칙을 tee 프로세스로 저장/실행 하여 디렉토리에 유저 파일을 생성. 근데 관리자 권한이 필요하니 sudo로 실행
 
 - `id ops_user`를 통해 ops_user 생성 확인.
