@@ -1,5 +1,5 @@
-# S3
-## 외부의 파일을 저장하는 공간, Access Key를 이용하기엔 위험부담이 있기에, IAM Role을 이용하여 Access Key가 없어도 특정한 역할을 이용 가능하게 해보기.
+# S3, ACL
+## S3 : 외부의 파일을 저장하는 공간, Access Key를 이용하기엔 위험부담이 있기에, IAM Role을 이용하여 Access Key가 없어도 특정한 역할을 이용 가능하게 해보기.
 
 ### S3 버킷 생성
 - S3 버킷 생성. 버킷 이름은 my-infra-log-bucket-hyeongi
@@ -70,3 +70,15 @@
 ####
 Access Key를 사용하면 위험부담이 있기에, 특정한 역할(업로드, 다운로드)는 Access Key가 없어도 사용할 수 있게하는 역할 부여.   
 Access Key를 사용하지않고, 임시 자격을 부여했기에 권한유출위험이 덜함.
+
+* * *
+
+## ACL : Network ACL, 외부 경계 방화벽
+### 네트워크 ACL 개념 이해
+- ACL 규칙편집
+- <img width="1585" height="567" alt="Image" src="https://github.com/user-attachments/assets/99b620b3-50e8-4583-8749-49e75d49cabd" />
+- 규칙 90 : ssh | 내 공인 IP | Deny
+- 규칙 100 : ssh | 모든 IP | Allow
+- <img width="689" height="98" alt="Image" src="https://github.com/user-attachments/assets/76fc986e-42b4-49dc-86d8-49a81752db90" />
+- 우선 ACL은 SG보다 먼저 작용함을 알 수 있음 : SG는 ssh 모두 허용상태이지만, 내 IP가 접속하는것이 거부됬기에.
+- ALC은 규칙번호 순서대로 작동한다. 90번 규칙을 통해 나의 IP를 거부하고, 100번 규칙을 통해 모든 IP를 허용했지만, 내 IP가 거부됨을 확인.
