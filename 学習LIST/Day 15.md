@@ -2,13 +2,13 @@
 
 ## 모듈화를 위한 폴더 정리
 >home
->  >terraform_study
->  >  >main.tf
->  >  >modules
->  >  >  >web_server
->  >  >  >  >main.tf
->  >  >  >  >variables.tf
->  >  >  >  >outputs.tf
+>  >terraform_study   
+>  >  >main.tf   
+>  >  >modules   
+>  >  >  >web_server   
+>  >  >  >  >main.tf   
+>  >  >  >  >variables.tf   
+>  >  >  >  >outputs.tf   
 
 ### terrafrom_study : 프로젝트 폴더
 - main.tf : 대장 파일 (모듈을 불러올 역할)
