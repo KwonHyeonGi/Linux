@@ -1,6 +1,6 @@
 # E 
    
-<img width="866" height="618" alt="Image" src="https://github.com/user-attachments/assets/c6ea908d-3e7c-4ae0-8962-4ca6a1950457" />   
+<img width="866" height="618" alt="Image" src="https://github.com/user-attachments/assets/c6ea908d-3e7c-4ae0-8962-4ca6a1950457" />
 
 - 실행 전 terraform plan을 통해서 수많은 에러를 확인. 
 - 모든 코드 실행전 terraform plan을 통해서 에러를 확인하고, 에러코드를 확인해서 수정함으로써 실제로 오류가 나지않도록 하였음.
